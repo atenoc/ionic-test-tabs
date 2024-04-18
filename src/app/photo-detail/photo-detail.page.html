@@ -1,0 +1,55 @@
+<ion-header>
+  <ion-toolbar color="dark">
+    <ion-buttons slot="start" tab="tab2">
+      <ion-back-button defaultHref="/tabs/tab2"></ion-back-button>
+    </ion-buttons>
+
+    <ion-title> Detalles </ion-title>
+
+    <ion-buttons slot="end">
+      <ion-button shape="round" fill="outline" color="danger"  (click)="deletePhoto(photo._id)">
+        <ion-icon name="trash-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  
+<div class="row" *ngIf="!photo; else main_content">
+  <h1>Loading...</h1>
+</div>
+<ng-template #main_content>
+  <div class="row">
+      <div class="col-md-5">
+          <div class="card">
+              <img [src]="'http://localhost:4000/' + photo.imagenPath" class="img-card-top w-100">
+          </div>
+      </div>
+      <div class="col-md-7">
+          <div class="card">
+              <form class="card-body" (submit)="updatePhoto(title, description)">
+
+                  <ion-item>
+                    <ion-label position="floating">Titulo:</ion-label>
+                    <ion-input placeholder="Escribe el titulo de la imágen" [value]="photo.titulo" #title></ion-input>
+                  </ion-item>
+
+                  <!-- Textarea in an item with a floating label -->
+                  <ion-item>
+                    <ion-label position="floating">Descripción:</ion-label>
+                    <ion-textarea placeholder="Escribe la descripción de la imágen" [value]="photo.descripcion" #description></ion-textarea>
+                  </ion-item>
+  
+                  <ion-button type="submit" expand="block" name="star" shape="round">Actualizar Datos</ion-button>
+              </form>
+          </div>
+      </div>
+  </div>
+
+</ng-template>
+
+
+</ion-content>

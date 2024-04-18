@@ -1,17 +1,32 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Tab 1
+      Lista de Imágenes
     </ion-title>
+
+    <ion-tab-button tab="photo-form" slot="end">
+      <ion-icon name="add-outline"></ion-icon>
+      <ion-label>Ir a Form</ion-label>
+    </ion-tab-button>
+
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
-    </ion-toolbar>
-  </ion-header>
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+  <ion-card *ngFor="let photo of photos?.reverse()" (click)="selectedCard(photo._id)" class="card-photo">
+    <ion-card-header>
+      <ion-card-subtitle>Publicado: 24 de Junio del 2020</ion-card-subtitle>
+      <ion-card-title>{{photo.titulo}}</ion-card-title>
+    </ion-card-header>
+    <img [src]="'http://localhost:4000/' + photo.imagenPath" class="img-card-top w-100">
+    <ion-card-content>
+      {{photo.descripcion}}
+    </ion-card-content>
+  </ion-card>
+
+
+
+
 </ion-content>
+

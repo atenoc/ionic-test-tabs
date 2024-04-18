@@ -20,6 +20,18 @@ const routes: Routes = [
         loadChildren: () => import('../tab3/tab3.module').then(m => m.Tab3PageModule)
       },
       {
+        path: 'tab4',
+        loadChildren: () => import('../tab4/tab4.module').then(m => m.Tab4PageModule)
+      },
+      {
+        path: 'photo-form',
+        loadChildren: () => import('../photo-form/photo-form.module').then( m => m.PhotoFormPageModule)
+      },
+      {
+        path: 'photo-detail/:id',
+        loadChildren: () => import('../photo-detail/photo-detail.module').then( m => m.PhotoDetailPageModule)
+      },
+      {
         path: '',
         redirectTo: '/tabs/tab1',
         pathMatch: 'full'
